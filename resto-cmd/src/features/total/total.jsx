@@ -1,22 +1,17 @@
-import { useStore } from "react-redux";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getTotalOrder, getProductList } from "../../app/selectors";
 
 export const Total = () => {
-  const store = useStore();
-  const [list, setList] = useState(store.getState().list);
+  const list = useSelector(getProductList);
 
-  const totalCommand = list.reduce((prv, cur) => cur.price + prv, 0);
-  useEffect(() => {
-    store.subscribe(() => {
-      setList(store.getState().list);
-    });
-  });
+  const totalCommand = useSelector(getTotalOrder);
+
   return (
     <div className="TotalCommand">
       {list.length === 0 ? (
         <div>"Aucun produtit sélectioné"</div>
       ) : (
-        <div>{totalCommand}</div>
+        <div>Total commande {totalCommand.toFixed(2)}€</div>
       )}
     </div>
   );

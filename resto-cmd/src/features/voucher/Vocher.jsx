@@ -1,15 +1,10 @@
-import { useStore } from "react-redux";
+import { useStore, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { isVoucherAvailable } from "../../app/selectors";
 
 export const Voucher = () => {
   const store = useStore();
-  const [list, setList] = useState(store.getState().list);
-
-  const available = list.find((product) => product.title === "Super Crémeux");
-
-  useEffect(() => {
-    store.subscribe(() => setList(store.getState().list));
-  });
+  const available = useSelector(isVoucherAvailable);
 
   return (
     <div className="Voucher">
