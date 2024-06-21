@@ -4,6 +4,7 @@ let state = {
   value: null,
   list: [],
   firstName: null,
+  orders: {},
 };
 
 const reducer = (currentState, action) => {

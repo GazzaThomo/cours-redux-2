@@ -8,3 +8,20 @@ export const getTotalOrder = (state) =>
 
 export const isVoucherAvailable = (state) =>
   getProductList(state).find((product) => product.title === "Super Crémeux");
+
+export const orderNumber = (state) =>
+  countProductOccurrences(getProductList(state));
+
+function countProductOccurrences(productArray) {
+  const productCount = {};
+
+  productArray.forEach((product) => {
+    if (productCount[product.title]) {
+      productCount[product.title]++;
+    } else {
+      productCount[product.title] = 1;
+    }
+  });
+
+  return productCount;
+}
