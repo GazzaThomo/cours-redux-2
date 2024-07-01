@@ -2,10 +2,7 @@ import { useSelector } from "react-redux";
 import { getProductList, orderNumber } from "../../app/selectors";
 
 export const Cart = () => {
-  const list = useSelector(getProductList);
-  console.log(list);
   const numberOfEachProduct = useSelector(orderNumber);
-  console.log(numberOfEachProduct);
 
   return (
     <div className="Selection">

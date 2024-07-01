@@ -1,6 +1,7 @@
 import { ProductCard } from "../../common/components/ProductCard.jsx";
 import * as ProductList from "../../common/models.js";
 import { useDispatch } from "react-redux";
+import { cartSlice } from "../cart/cartSlice.js";
 
 export const Menu = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export const Menu = () => {
           key={product.name}
           product={product}
           onSelect={() => {
-            dispatch({ type: "ADD_PRODUCT", payload: product });
+            dispatch(cartSlice.actions.addProduct(product));
           }}
         />
       ))}
