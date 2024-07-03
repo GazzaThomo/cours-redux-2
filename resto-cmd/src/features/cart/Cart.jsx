@@ -3,6 +3,7 @@ import { getProductList, orderNumber } from "../../app/selectors";
 
 export const Cart = () => {
   const numberOfEachProduct = useSelector(orderNumber);
+  console.log(numberOfEachProduct);
 
   return (
     <div className="Selection">

@@ -1,3 +1,5 @@
+import * as ProductList from "../common/models";
+
 export const getProductList = (state) => state?.list;
 
 export const getTotalOrder = (state) =>
@@ -25,3 +27,15 @@ function countProductOccurrences(productArray) {
 
   return productCount;
 }
+
+export const getQuantityProductPerName = (name) => (state) =>
+  getProductList(state).filter((product) => product.title === name).length;
+
+export const getListQuantityProductPerName = (state) =>
+  Object.values(ProductList).map((product) => ({
+    title: product.title,
+    quantity: getQuantityProductPerName(product.title)(state),
+  }));
+
+export const getUnavailableProducts = (state) =>
+  state?.mennu?.unavailableProducts;
